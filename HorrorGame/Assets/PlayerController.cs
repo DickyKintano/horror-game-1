@@ -98,6 +98,16 @@ public class PlayerController : MonoBehaviour
         if (hit)
         {
             Debug.Log(hit.transform.name);
+            Interactable interactable = hit.collider.GetComponent<Interactable>();
+            if (interactable != null)
+            {
+                SetInteractingPlayer(interactable);
+            }
         }
+    }
+
+    private void SetInteractingPlayer(Interactable interactingPlayer)
+    {
+        interactingPlayer.SetInteractingPlayer(transform);
     }
 }
