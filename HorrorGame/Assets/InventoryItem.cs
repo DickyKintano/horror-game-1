@@ -3,17 +3,15 @@ using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour
 {
-    Item item;
-
-    public Image icon;
     [SerializeField] private Button useButton;
     [SerializeField] private Button discardButton;
+
+    private Item item;
+    public Image icon;
 
     public void AddItem(Item newItem)
     {
         item = newItem;
-
-        Debug.Log("new item icon: " + item.icon);
 
         icon.sprite = item.icon;
         icon.enabled = true;

@@ -22,9 +22,11 @@ public class GameManager : MonoBehaviour
     {
         if (!inventory.activeInHierarchy)
         {
+            Time.timeScale = 0;
             inventory.SetActive(true);
         } else 
         {
+            Time.timeScale = 1;
             inventory.SetActive(false);
         }
     }

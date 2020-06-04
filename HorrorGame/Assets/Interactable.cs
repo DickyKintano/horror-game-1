@@ -2,14 +2,15 @@
 
 public class Interactable : MonoBehaviour
 {
-    [SerializeField] private float radius = 0.5f;
-    [SerializeField] private Transform player;
-    [SerializeField] private Transform interactionTransform;
+    [Tooltip("Range where player can interact with the object")]
+    public float radius = 0.5f;
+    public Transform player;
+    public Transform interactionTransform;
 
     private void Update()
     {
         float distance = Vector3.Distance(player.position, interactionTransform.position);
-        if (distance <= radius)
+        if (distance <= radius && Input.GetButtonDown("Interact"))
         {
             Interact();
             Debug.Log("Interact");
