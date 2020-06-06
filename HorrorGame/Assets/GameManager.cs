@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject inventory;
+    //[SerializeField] private Button continueButton;
 
     private void Start()
     {
         inventory.GetComponent<InventoryUI>().init();
+
+        // enable continue button if save file exist
     }
 
     private void Update()
