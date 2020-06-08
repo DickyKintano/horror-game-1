@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject inventory;
-    //[SerializeField] private Button continueButton;
+    [SerializeField] private Transform player;
+
+    #region Inventory
 
     private void Start()
     {
         inventory.GetComponent<InventoryUI>().init();
-
-        // enable continue button if save file exist
     }
 
     private void Update()
@@ -34,4 +35,20 @@ public class GameManager : MonoBehaviour
             inventory.SetActive(false);
         }
     }
+    #endregion
+
+    #region Save & Load
+
+    public void SaveGame()
+    {
+        SaveSystem.SaveGame(player);
+    }
+
+    public void LoadGame()
+    {
+        SaveSystem.LoadGame();
+    }
+
+    #endregion
+
 }

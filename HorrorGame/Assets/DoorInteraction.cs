@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class DoorInteraction : Interactable
 {
@@ -14,18 +16,35 @@ public class DoorInteraction : Interactable
     [Tooltip("Determine if the door is locked or not")]
     [SerializeField] private bool isLocked = false;
 
+    [SerializeField] private Animator transition;
+
+    [SerializeField] private GameObject transitionCanvas;
+
     public override void Interact()
     {
         base.Interact();
-        
+
         if (!isLocked)
         {
+            /*
             player.position = targetPoint.position;
             targetArea.SetActive(true);
             currArea.SetActive(false);
+            */
+            StartCoroutine(OpenDoor());
         } else
         {
             //put out a dialog "door is locked"
         }
+    }
+
+    IEnumerator OpenDoor()
+    {
+        //need to pause the game?
+        transition.SetTrigger("travelling");
+        targetArea.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        player.position = targetPoint.position;
+        currArea.SetActive(false);
     }
 }
