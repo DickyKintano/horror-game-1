@@ -31,18 +31,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        print("xMove: " + xMove);
-        print("yMove: " + yMove);
         Move(xMove * moveSpeed * Time.deltaTime, yMove * moveSpeed * Time.deltaTime);
-        
-        
     }
 
     private void Move(float x, float y)
     {
         Vector2 movement = new Vector2(x * 10f, y * 10f);
-
-        print("movement: " + movement);
 
         playerRB.velocity = Vector2.SmoothDamp(playerRB.velocity, movement, ref velocity, movementSmoothing);
 

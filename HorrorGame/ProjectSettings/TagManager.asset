@@ -53,9 +53,15 @@ TagManager:
   - name: Door
     uniqueID: 1490508019
     locked: 0
-  - name: Props
+  - name: Props-Bottom
+    uniqueID: 3932140513
+    locked: 0
+  - name: Props-Top
     uniqueID: 2022219949
     locked: 0
   - name: Player
     uniqueID: 2478877537
+    locked: 0
+  - name: Door
+    uniqueID: 442701155
     locked: 0
