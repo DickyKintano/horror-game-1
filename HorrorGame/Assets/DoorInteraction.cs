@@ -40,7 +40,7 @@ public class DoorInteraction : Interactable
 
     IEnumerator OpenDoor()
     {
-        //need to pause the game?
+        //need to disable player movement
         transition.SetTrigger("travelling");
         targetArea.SetActive(true);
         yield return new WaitForSeconds(1f);

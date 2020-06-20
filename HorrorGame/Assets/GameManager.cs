@@ -5,9 +5,8 @@ using System.IO;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject inventory;
+    [SerializeField] private GameObject pauseMenu;
     [SerializeField] private Transform player;
-
-    #region Inventory
 
     private void Start()
     {
@@ -21,7 +20,14 @@ public class GameManager : MonoBehaviour
             OpenInvent();
         }
 
+        if (Input.GetButtonDown("PauseMenu"))
+        {
+            OpenPauseMenu();
+        }
+
     }
+
+    #region Inventory Menu
 
     public void OpenInvent()
     {
@@ -37,7 +43,24 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region Save & Load
+    #region Pause Menu
+
+    public void OpenPauseMenu()
+    {
+        if (pauseMenu.activeInHierarchy)
+        {
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1;
+        } else
+        {
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
+
+    #endregion
+
+    #region Save & Load System
 
     public void SaveGame()
     {
