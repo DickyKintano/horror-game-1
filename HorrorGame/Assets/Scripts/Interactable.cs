@@ -4,7 +4,9 @@ public class Interactable : MonoBehaviour
 {
     [Tooltip("Range where player can interact with the object")]
     public float radius = 0.5f;
+    //player transform
     public Transform interactingObject;
+    //interactable object transform
     public Transform interactionTransform;
     public bool hasInteracted = false;
 

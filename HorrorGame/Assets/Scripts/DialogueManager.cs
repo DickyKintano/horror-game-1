@@ -11,16 +11,27 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialogueUI;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
+    private bool dialogueActive = false;
     
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         sentences = new Queue<string>();
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    private void Update()
     {
+        if (dialogueActive && Input.GetButtonDown("NextDialogue"))
+        {
+            DisplayNextSentence();
+        }
+    }
+
+    public void StartDialogue(Dialogue dialogue, bool active)
+    {
+        dialogueActive = active;
+
         nameText.text = dialogue.name;
 
         sentences.Clear();
@@ -54,6 +65,7 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueUI.SetActive(false);
         Time.timeScale = 1;
+        dialogueActive = false;
         Debug.Log("end dialogue");
     }
 }

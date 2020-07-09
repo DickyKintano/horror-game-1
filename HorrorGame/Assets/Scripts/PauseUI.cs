@@ -16,6 +16,13 @@ public class PauseUI : MonoBehaviour
     public void OptionButton()
     {
         optionUI.SetActive(true);
+        pauseUI.SetActive(false);
+    }
+
+    public void OptionBackButton()
+    {
+        optionUI.SetActive(false);
+        pauseUI.SetActive(true);
     }
 
     public void TitleButton()

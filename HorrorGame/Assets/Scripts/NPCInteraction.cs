@@ -10,12 +10,12 @@ public class NPCInteraction : Interactable
     public override void Interact()
     {
         base.Interact();
-        talk();
+        Talk();
     }
 
-    public void talk()
+    public void Talk()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogue, true);
         hasInteracted = false;
     }
 }

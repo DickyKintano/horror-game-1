@@ -1,12 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject inventory;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject optionMenu;
     [SerializeField] private Transform player;
+
+    private bool isPaused = false;
+
+    public TMP_Dropdown drop;
 
     private void Start()
     {
@@ -22,9 +28,15 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetButtonDown("PauseMenu"))
         {
-            OpenPauseMenu();
+            GamePause();
         }
 
+    }
+
+    private void TestFunction()
+    {
+        int currval = drop.value;
+        drop.value = 1;
     }
 
     #region Inventory Menu
@@ -45,16 +57,19 @@ public class GameManager : MonoBehaviour
 
     #region Pause Menu
 
-    public void OpenPauseMenu()
+    public void GamePause()
     {
-        if (pauseMenu.activeInHierarchy)
+        if (isPaused)
         {
             pauseMenu.SetActive(false);
+            optionMenu.SetActive(false);
             Time.timeScale = 1;
+            isPaused = false;
         } else
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0;
+            isPaused = true;
         }
     }
 
@@ -62,14 +77,14 @@ public class GameManager : MonoBehaviour
 
     #region Save & Load System
 
-    public void SaveGame()
+    public void SaveGame(int slotNum)
     {
-        SaveSystem.SaveGame(player);
+        SaveSystem.SaveGame(player, slotNum);
     }
 
-    public void LoadGame()
+    public void LoadGame(int slotNum)
     {
-        SaveSystem.LoadGame();
+        SaveSystem.LoadGame(slotNum);
     }
 
     #endregion
